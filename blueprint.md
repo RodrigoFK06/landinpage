@@ -1,95 +1,96 @@
-# Blueprint: Expanding the Landing Page
+# Blueprint: Bytecore Digital Solutions
 
 ## Overview
 
-The goal is to expand the existing visually impressive hero section into a full-fledged, high-converting landing page. The design will be futuristic, clean, and interactive, guiding the user through a compelling narrative from introduction to conversion.
+This blueprint outlines the design, features, and technical specifications for the Bytecore website, a modern digital solutions agency. The goal is to create a high-converting, visually stunning, and feature-rich landing page that showcases the agency's expertise, portfolio, and team.
 
 ## Core Technologies
 
 - **Framework**: Next.js (App Router)
 - **Styling**: Tailwind CSS
-- **Animation**: GSAP (for scroll-triggered and complex timeline animations) & Framer Motion (for component entrance and state-based animations)
-- **3D Graphics**: Three.js
+- **UI Components**: shadcn/ui
+- **Animation**: Framer Motion, GSAP
 - **Icons**: lucide-react
 
-## Project Structure
+## Implemented Features
 
-The project will be organized into modular components to ensure clean code and maintainability.
-
-```
-/src
-|-- /app
-|   |-- page.tsx         # Main landing page component
-|   |-- layout.tsx       # Root layout
-|   |-- globals.css      # Global styles
-|-- /components
-|   |-- Hero.tsx             # The existing hero section (refactored)
-|   |-- Benefits.tsx         # "What we do differently" section
-|   |-- Methodology.tsx      # "How we work" section
-|   |-- Services.tsx         # "Our Services" section
-|   |-- Testimonials.tsx     # "Success Stories / Clients" section
-|   |-- CTA.tsx              # Final Call to Action section
-|   |-- AnimatedText.tsx     # Reusable component for text animations
-|-- /lib
-    |-- hooks.ts         # Custom hooks (e.g., for GSAP)
-```
-
-## Feature Implementation Plan
-
-### 1. Hero Section (Refactor)
-- **Action**: Move the existing hero section logic from `page.tsx` into its own `src/components/Hero.tsx` component.
-- **Features**:
-  - Three.js `Icosahedron` with a starfield background.
-  - Mouse-interactive lighting.
-  - Framer Motion animations for a staggered entrance of the headline, sub-headline, and CTA buttons.
+### 1. Hero Section (`Hero.tsx`)
+- **Purpose**: A captivating introduction to the Bytecore brand.
+- **Features**: Interactive 3D graphics, animated headlines, and clear call-to-action buttons.
 
 ### 2. Benefits Section (`Benefits.tsx`)
-- **Purpose**: Showcase key value propositions.
-- **Features**:
-  - A grid of animated cards.
-  - Each card will feature an icon from `lucide-react`, a title, and a short description.
-  - **Animation**:
-    - Cards will animate into view (fade in and slide up) as the user scrolls, triggered by GSAP's `ScrollTrigger`.
-    - A subtle "glow" or "lift" effect on hover using Framer Motion.
+- **Purpose**: Highlight the unique value propositions of Bytecore.
+- **Features**: A grid of animated cards, each with an icon, title, and description.
 
 ### 3. Methodology Section (`Methodology.tsx`)
-- **Purpose**: Explain the working process in clear steps.
-- **Features**:
-  - A sequentially displayed list of steps (e.g., "1. Discovery", "2. Design", "3. Development", "4. Deployment").
-  - **Animation**:
-    - Use GSAP `timeline` coordinated with `ScrollTrigger` to animate each step in sequence as the user scrolls down. Each step will have a line drawing animation connecting it to the next, creating a visual flow.
+- **Purpose**: Explain the agency's structured workflow.
+- **Features**: A step-by-step visual guide animated on scroll.
 
 ### 4. Services Section (`Services.tsx`)
-- **Purpose**: Detail the specific services offered.
-- **Features**:
-  - A clean layout of service cards.
-  - Each card will have a title, description, and a call-to-action or "learn more" link.
-  - **Animation**:
-    - Cards will have a gentle parallax effect on scroll, creating a sense of depth.
-    - Staggered entrance animation using Framer Motion as the section comes into view.
+- **Purpose**: Detail the range of services offered.
+- **Features**: Clean, informative cards with parallax scroll effects.
 
 ### 5. Testimonials Section (`Testimonials.tsx`)
-- **Purpose**: Build trust with social proof.
+- **Purpose**: Build trust through client success stories.
+- **Features**: A modern carousel of testimonial cards.
+
+### 6. CTA Section (`CTA.tsx`)
+- **Purpose**: Drive user conversion with a strong call to action.
+- **Features**: High-contrast design with an eye-catching, interactive button.
+
+---
+
+## Current Development Plan: New Sections
+
+The following sections will be designed, developed, and integrated into the main landing page, maintaining the existing modern, clean, and professional aesthetic.
+
+### 1. Footer (`Footer.tsx`)
+- **Purpose**: Provide essential navigation, contact information, and legal links.
+- **Design**:
+    - **Layout**: Multi-column layout that adapts cleanly to mobile screens.
+    - **Style**: Dark background consistent with the site's theme, with text in shades of grey and white. Accent colors (blue/teal) for links on hover.
 - **Features**:
-  - A carousel or grid of testimonial cards.
-  - Each card will feature a quote, customer name, and company.
-  - **Animation**:
-    - Animate the entrance of testimonials using a `clip-path` effect for a modern reveal.
-    - The carousel (if implemented) will be draggable.
+    - **Quick Links**: "Inicio", "Servicios", "Portafolio", "Contacto".
+    - **Contact Info**: Clearly display email and a WhatsApp link.
+    - **Social Media**: Icons for LinkedIn, Instagram, and Facebook using `lucide-react`.
+    - **Legal**: Links to "Política de Privacidad" and "Términos de Servicio".
+    - **Branding**: A subtle Bytecore logo or logotype.
 
-### 6. Call to Action (CTA) Section (`CTA.tsx`)
-- **Purpose**: Drive user conversion.
+### 2. Portfolio / Case Studies (`Portfolio.tsx`)
+- **Purpose**: Showcase past work and demonstrate capabilities.
+- **Design**:
+    - **Layout**: A responsive grid of visual cards.
+    - **Style**: Each card will have a dark background, a placeholder for an image/video, and clean typography.
+    - **Interactivity**: A soft "lift" or "glow" effect on hover, revealing more details or a call-to-action.
 - **Features**:
-  - A high-contrast, visually distinct section.
-  - A prominent headline and a clear call-to-action button.
-  - **Animation**:
-    - The button will have an eye-catching hover effect (e.g., a GSAP-powered glow or magnetic effect).
-    - Subtle, floating Three.js particles in the background to add a touch of magic without being distracting.
-  - **Future Integration**: This section is the ideal place to add a form and connect it to a backend service like Supabase for lead capture.
+    - **Card Content**: Each card will display:
+        - Project Title
+        - Brief Description
+        - Technology Stack (e.g., Next.js, Tailwind, Firebase)
+    - **Visuals**: Placeholder images will be used initially, with the ability to easily swap them for actual project visuals.
 
-### Styling & UX
+### 3. "Our Team" Section (`Team.tsx`)
+- **Purpose**: Humanize the brand and introduce the core team members.
+- **Design**:
+    - **Layout**: A centered section with a grid of profile cards.
+    - **Style**: Consistent with the portfolio cards—dark background, clean text, and professional aesthetics.
+    - **Interactivity**: A subtle hover effect on each card.
+- **Features**:
+    - **Card Content**:
+        - Member's Photo/Avatar
+        - Name
+        - Role (e.g., "Lead Developer", "UI/UX Designer")
+        - A brief, engaging biography.
 
-- **Responsiveness**: All components will be fully responsive, tested on mobile, tablet, and desktop viewport sizes.
-- **Color Palette**: Stick to the established dark background with yellow/orange/lavender accents.
-- **Typography**: Use a clean, modern font hierarchy to ensure readability.
-- **Lazy Loading**: While not critical for this phase, components with heavy 3D assets could be lazy-loaded using `next/dynamic` to improve initial page load times.
+### 4. Blog Section (`Blog.tsx`)
+- **Purpose**: Share expertise, improve SEO, and engage the community.
+- **Design**:
+    - **Layout**: A list or grid of article cards.
+    - **Style**: Clean, readable cards optimized for content consumption.
+- **Features**:
+    - **Card Content**:
+        - Article Title
+        - Short Summary/Excerpt
+        - Publication Date
+        - Author Name
+    - **Functionality**: Each card will link to a placeholder or future detailed blog post page.
