@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bytecore - Fondos de Sección Unificados</title>
+  <link rel="stylesheet" href="src/styles.css">
+  <style>
+    /* Estilos adicionales para la demo */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 8rem 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+    .controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+    }
+    .controls button {
+      background: #0072FF;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<!-- Para probar el modo claro, añade la clase 'light-mode' al body -->
+<body>
+
+  <header class="section-bg">
+    <div class="section-content">
+      <h1>Fondos Unificados</h1>
+      <p>Esta es la primera sección (impar). El halo de color azul (#0072FF) aparece desde la esquina inferior izquierda, creando una base suave y profunda.</p>
+    </div>
+  </header>
+
+  <main class="section-bg">
+    <div class="section-content">
+      <h1>Efecto Continuo</h1>
+      <p>Esta es la segunda sección (par). El halo de color teal (#00BFA6) emana desde la esquina superior izquierda. Al hacer scroll, se percibe un movimiento circular continuo que conecta visualmente las secciones.</p>
+    </div>
+  </main>
+
+  <div class="controls">
+    <button id="toggle-theme">Cambiar a Modo Claro</button>
+  </div>
+
+  <script>
+    const themeToggleButton = document.getElementById('toggle-theme');
+    themeToggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeToggleButton.textContent = isLight ? 'Cambiar a Modo Oscuro' : 'Cambiar a Modo Claro';
+    });
+  </script>
+
+</body>
+</html>
