@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Bytecore - Unified Section Background Utility
+   ========================================================================== */
+
+/* 1. Definimos las variables de color en la raíz para fácil acceso y consistencia.
+      En un proyecto con Tailwind, esto podría vivir en `tailwind.config.js`.
+      Aquí usamos el selector :root para un CSS puro.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Dark Mode (Default) */
+  --color-bg-dark: #0B0E17;
+  --color-accent-blue: #0072FF;
+  --color-accent-teal: #00BFA6;
+
+  /* Paleta Light Mode */
+  --color-bg-light: #F0F2F5;
+  --color-accent-blue-light: #0072FF;
+  --color-accent-teal-light: #00BFA6;
+}
+
+/* ==========================================================================
+   .section-bg Utility
+   ========================================================================== */
+
+/* 2. Clase base que se aplicará a cada <section>.
+      - `position: relative` es CRÍTICO para contener el pseudo-elemento.
+      - `isolation: isolate` crea un nuevo contexto de apilamiento, evitando
+        que el `z-index: -1` del pseudo-elemento se oculte detrás del body.
+      - Se establece el color de fondo base.
+   -------------------------------------------------------------------------- */
+.section-bg {
+  position: relative;
+  isolation: isolate; /* Clave para que z-index funcione predeciblemente */
+  background-color: var(--color-bg-dark);
+  color: #FFFFFF; /* Texto blanco para contraste en modo oscuro */
+  overflow: hidden; /* Evita que el halo se desborde si es muy grande */
+}
+
+/* 3. El pseudo-elemento que crea el efecto "halo".
+      - `position: absolute` con `inset: 0` lo estira para cubrir la sección.
+      - `z-index: -1` lo coloca detrás del contenido de la sección.
+      - `background-image` usa el radial-gradient con nuestras variables CSS.
+        La transparencia al 70% crea un borde suave y difuminado.
+   -------------------------------------------------------------------------- */
+.section-bg::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at var(--pos),
+    var(--from) 0%,
+    transparent 70%
+  );
+  opacity: 0.25; /* Opacidad base del halo, fácil de ajustar */
+  transition: opacity 0.3s ease-in-out; /* Transición suave para modo claro/oscuro */
+}
+
+/* 4. Lógica de alternancia para el patrón de halo.
+   -------------------------------------------------------------------------- */
+
+/* Secciones impares (1, 3, 5...) */
+.section-bg:nth-of-type(odd)::before {
+  --pos: bottom left;
+  --from: var(--color-accent-blue);
+}
+
+/* Secciones pares (2, 4, 6...) */
+.section-bg:nth-of-type(even)::before {
+  --pos: top left;
+  --from: var(--color-accent-teal);
+}
+
+/* ==========================================================================
+   Light Mode Support
+   ========================================================================== */
+
+/* 5. Ajustes para el modo claro.
+      - Asumimos que el modo claro se activa añadiendo una clase `light-mode` al <body>.
+      - Se invierte el color de fondo y se ajusta el color del texto.
+      - Se reduce la opacidad del halo para que sea más sutil sobre fondo claro.
+   -------------------------------------------------------------------------- */
+.light-mode .section-bg {
+  background-color: var(--color-bg-light);
+  color: #111827; /* Texto oscuro para contraste en modo claro */
+}
+
+.light-mode .section-bg::before {
+  opacity: 0.15; /* Menos opacidad para un efecto más sutil */
+}
+
+/* Opcional: Usar colores específicos para modo claro si es necesario */
+.light-mode .section-bg:nth-of-type(odd)::before {
+  --from: var(--color-accent-blue-light);
+}
+
+.light-mode .section-bg:nth-of-type(even)::before {
+  --from: var(--color-accent-teal-light);
+}
