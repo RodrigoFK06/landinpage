@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedText from "./AnimatedText";
 
@@ -22,20 +22,15 @@ const testimonials = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { 
     opacity: 0, 
     clipPath: "inset(0 50% 0 50%)"
   },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     clipPath: "inset(0 0 0 0)",
-    transition: {
-      delay: i * 0.2,
-      duration: 0.8,
-      ease: "easeInOut",
-    },
-  }),
+  },
 };
 
 
@@ -64,9 +59,12 @@ export default function Testimonials() {
               key={i}
               className="bg-gray-800/40 p-8 rounded-2xl shadow-lg border border-gray-700/50 flex flex-col"
               variants={cardVariants}
-              custom={i}
+              transition={{
+                delay: i * 0.2,
+                duration: 0.8,
+              }}
             >
-              <p className="text-gray-300 italic mb-6 flex-grow">"{testimonial.quote}"</p>
+              <p className="text-gray-300 italic mb-6 flex-grow">&ldquo;{testimonial.quote}&rdquo;</p>
               <div>
                 <p className="font-bold text-yellow-400">{testimonial.author}</p>
                 <p className="text-gray-500">{testimonial.title}</p>

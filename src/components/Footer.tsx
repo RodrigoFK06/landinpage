@@ -30,11 +30,11 @@ const Footer = () => {
             <ul className="mt-4 space-y-2">
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-2" />
-                <a href="mailto:contacto@bytecore.dev" className="hover:text-white transition-colors">contacto@bytecore.dev</a>
+                <a href="mailto:rodrigoan.torresp@gmail.com" className="hover:text-white transition-colors">contacto@bytecore.dev</a>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-2" />
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
+                <a href="https://wa.me/+51961869348" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
               </li>
             </ul>
           </div>
@@ -43,7 +43,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-white">Síguenos</h3>
             <div className="flex mt-4 space-x-4">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Linkedin /></a>
+              <a href="https://www.linkedin.com/in/rodrigo-torres-bytecore/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Linkedin /></a>
               <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Instagram /></a>
               <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Facebook /></a>
             </div>

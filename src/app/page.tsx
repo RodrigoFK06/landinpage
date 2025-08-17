@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Team from "@/components/Team";
+import Blog from "@/components/Blog";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -20,6 +21,7 @@ export default function Home() {
       <Portfolio />
       <Testimonials />
       <Team />
+      <Blog />
       <CTA />
       <Footer />
     </main>

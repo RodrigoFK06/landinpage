@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { PenTool, Code, Rocket, BrainCircuit } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -82,7 +81,9 @@ export default function Methodology() {
           {steps.map((step, index) => (
             <div
               key={index}
-              ref={(el) => (stepsRef.current[index] = el)}
+              ref={(el) => {
+                stepsRef.current[index] = el;
+              }}
               className="mb-16 md:mb-24 opacity-0"
             >
               <div className="flex flex-col md:flex-row items-center">

@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import { motion, Variants } from "framer-motion";
 import * as THREE from "three";
-import AnimatedText from "./AnimatedText";
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -53,7 +52,7 @@ export default function Hero() {
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
 
-    let mouse = new THREE.Vector2();
+    const mouse = new THREE.Vector2();
     const handleMouseMove = (event: MouseEvent) => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -127,7 +126,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-5xl md:text-7xl font-extrabold tracking-tight"
         >
-          Impulsamos tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">negocio</span> al futuro 🚀
+          Impulsamos tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-400">negocio</span> al futuro
         </motion.h1>
         <motion.p
           variants={itemVariants}

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Zap, ShieldCheck, BarChart2 } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 
@@ -21,17 +21,12 @@ const benefits = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
+  },
 };
 
 export default function Benefits() {
@@ -57,7 +52,10 @@ export default function Benefits() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={i}
+              transition={{
+                delay: i * 0.2,
+                duration: 0.6,
+              }}
               whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(253, 224, 71, 0.2)" }}
             >
               <div className="flex justify-center mb-4">{benefit.icon}</div>

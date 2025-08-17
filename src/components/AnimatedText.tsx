@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import React from "react";
 
 type AnimatedTextProps = {
   text: string;
-  el?: keyof JSX.IntrinsicElements;
+  el?: keyof React.JSX.IntrinsicElements;
   className?: string;
   once?: boolean;
 };

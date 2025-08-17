@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Code, Brush, BarChart, Server } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 
@@ -26,21 +26,15 @@ const services = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   offscreen: {
     y: 100,
     opacity: 0,
   },
-  onscreen: (i: number) => ({
+  onscreen: {
     y: 0,
     opacity: 1,
-    transition: {
-      type: "spring",
-      bounce: 0.4,
-      duration: 0.8,
-      delay: i * 0.1,
-    },
-  }),
+  },
 };
 
 export default function Services() {
@@ -66,7 +60,12 @@ export default function Services() {
               whileInView="onscreen"
               viewport={{ once: true, amount: 0.5 }}
               variants={cardVariants}
-              custom={i}
+              transition={{
+                type: "spring",
+                bounce: 0.4,
+                duration: 0.8,
+                delay: i * 0.1,
+              }}
             >
               <div className="mb-4">{service.icon}</div>
               <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
