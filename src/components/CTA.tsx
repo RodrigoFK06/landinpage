@@ -63,7 +63,7 @@ export default function CTA() {
   };
 
   return (
-    <section id="contacto" className="py-20 sm:py-32 bg-gradient-to-br from-yellow-400/20 via-transparent to-transparent">
+    <section id="contacto" className="py-20 sm:py-32 bg-gray-900/50">
       <div className="container mx-auto px-6">
         <div className="text-center">
           <AnimatedText
